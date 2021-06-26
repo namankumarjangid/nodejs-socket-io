@@ -4,6 +4,10 @@ let user;
 let textarea = document.querySelector('#textarea')
 let messageArea = document.querySelector('.msg-area')
 
+// Audio that will play on receiving messages
+var audio = new Audio('ting.mp3');
+
+
 do {
     user = prompt('Please enter your name:')
 } while (!user);
@@ -50,6 +54,7 @@ socket.on('message', (msg) => {
     // console.log(msg);
     appendMessage(msg, 'incoming')
     scrollToBottom()
+    audio.play()
 })
 
 function scrollToBottom() {
